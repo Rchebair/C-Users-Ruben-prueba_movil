@@ -5,10 +5,31 @@ import 'MenuPrincipal.dart';
 
 class LoginPage extends StatelessWidget {
   Widget renderNombreInput() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 15),
-      child: TextFormField(
-        decoration: InputDecoration(hintText: 'Empresa'),
+    return Container(
+      child: Form(
+        key: key,
+        child: Column(
+          children: <Widget>[
+            TextFormField(
+              validator: (Text){
+                if(Text.length == 0){
+                  return "Este Campo es requerido";
+                }
+                return null;
+              },
+              keyboardType: TextInputType.emailAddress,
+                    maxLength: 50,
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                      hintText: 'Ingrese su Empresa',
+                      labelText: 'Empresa',
+                      counterText: '',
+                      icon: Icon(Icons.account_balance,
+                          size: 32.0, color: Colors.blue[800]),
+                    ),
+            )
+          ],
+        ),
       ),
     );
   }
